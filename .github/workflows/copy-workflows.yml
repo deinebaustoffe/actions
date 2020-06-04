@@ -1,0 +1,25 @@
+name: Copy Workflows
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy Workflows
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          src_path: /workflows/.
+          dst_path: /.github/workflows/
+          dst_owner: 4raum
+          dst_repo_name: 4raum.co
+          dst_branch: master
+          src_branch: master
+          src_wiki: false
+          dst_wiki: false
+          username: 4raum-bot
+          email: opensource@4raum.co
